@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>information</title>
+</head>
+<body>
+{% for record in records %}
+  <p>{{ record.identity }} {{ record.name }}在{{ record.time }}进入房间</p>
+{% endfor %}
+</body>
+</html>
