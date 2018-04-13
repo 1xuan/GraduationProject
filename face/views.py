@@ -30,7 +30,7 @@ def interaction(request, face_token):
     while True:
         response = requests.post(http_url, data=data)
         response = json.loads(response.text)
-        if not response.get('ERROR_MESSAGE'):
+        if not response.get('error_message'):
             break
 
     conf = response["results"][0]["confidence"]

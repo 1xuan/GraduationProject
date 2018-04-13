@@ -2,6 +2,7 @@ import requests
 import json
 import os
 
+from django.http import HttpResponse
 from datetime import datetime
 from django.db import models
 
@@ -50,9 +51,10 @@ class Person(models.Model):
                     break
 
         # 没有检测到人脸便抛出错误
-        self.face_token = response['faces'][0]['face_token']
+        if len(response['faces']) is 0:
+            pass
 
-
+        self.face_token = response["faces"][0]["face_token"]
 
         # 添加face_token到faceset
         http_url_add = 'https://api-cn.faceplusplus.com/facepp/v3/faceset/addface'
