@@ -34,12 +34,13 @@ def interaction(request, face_token):
             break
 
     conf = response["results"][0]["confidence"]
+
     # 获取置信度
     e_5 = response["thresholds"]["1e-5"]
     e_4 = response["thresholds"]["1e-4"]
 
     # 对比结果置信度
-    if conf > e_5:
+    if conf > e_4:
         # 从 FaceSet 中搜索出的一个人脸标识 face_token
         token = response["results"][0]["face_token"]
 
@@ -47,7 +48,7 @@ def interaction(request, face_token):
         record = Action()
         record.name = person.name
         record.identity = person.identity
-        record.time = datetime.datetime.now()
+        record.time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         record.save()
         return HttpResponse(True)
     else:

@@ -1,12 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>information</title>
+	<meta charset="utf-8">
+	<title>Bootstrap 实例 - 超大屏幕（Jumbotron）</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-{% for record in records %}
-  <p>{{ record.identity }} {{ record.name }}在{{ record.time }}进入房间</p>
-{% endfor %}
+
+<div class="container">
+   <div class="jumbotron">
+        <h1>信息界面</h1>
+        <p>人员和门锁开关信息</p>
+        <p><a class="btn btn-primary btn-lg" role="button" href="admin">
+        admin</a>
+      </p>
+   </div>
+</div>
+
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand">人员出入信息</a>
+    </div>
+    <div>
+        <!--向右对齐-->
+        <form class="navbar-form navbar-right" role="search">
+            <div class="switch" data-on="success" data-off="warning">
+            <input type="checkbox" checked />
+</div>
+        </form>
+        <p class="navbar-text navbar-right">门锁开关控制</p>
+    </div>
+    </div>
+</nav>
+
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title">信息</h3>
+	</div>
+
+  {% for record in records %}
+    <div class="panel-body">
+      {{ record.identity }} {{ record.name }}在{{ record.time }}进入房间
+    </div>
+  {% endfor %}
+</div>
+</div>
 </body>
 </html>

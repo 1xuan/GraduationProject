@@ -12,7 +12,7 @@ from GraduationProject.settings import BASE_DIR
 class Action(models.Model):
     name = models.CharField(max_length=10, verbose_name='姓名')
     identity = models.CharField(max_length=20, verbose_name='身份')
-    time = models.DateField(default=datetime.now, verbose_name='时间')
+    time = models.CharField(max_length=50, verbose_name='时间')
 
     def __str__(self):
         return self.name
